@@ -1,11 +1,10 @@
 import csv
-import requests
 from bs4 import BeautifulSoup
-import requests
+from security import safe_requests
 
 
 def get_data(url):
-    response = requests.get(url)
+    response = safe_requests.get(url)
     soup = BeautifulSoup(response.text, 'lxml')
     table_of_contents = soup.find("div", id="toc")
     headings = table_of_contents.find_all("li")
