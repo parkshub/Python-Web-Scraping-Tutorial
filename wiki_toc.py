@@ -5,7 +5,7 @@ import requests
 
 
 def get_data(url):
-    response = requests.get(url)
+    response = requests.get(url, timeout=60)
     soup = BeautifulSoup(response.text, 'lxml')
     table_of_contents = soup.find("div", id="toc")
     headings = table_of_contents.find_all("li")
